@@ -20,8 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route::resource('test', 'App\Http\Controllers\ContactController');
 
-Route::get('react', [ContactController::class, 'getreact']);
-Route::post('react', [ContactController::class, 'postreact']);
+Route::get('/react', [ContactController::class, 'getreact']);
+Route::post('/react', [ContactController::class, 'getreact']);
 
 
 

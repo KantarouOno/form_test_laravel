@@ -25,24 +25,16 @@ class ContactController extends Controller
         return view('contact.index');
     }
 
-
-    public function postreact()
-    {
-        $testData = [
-            ["id" => "1", "title" => "foo"],
-        ];
-        return $testData;
-
-    }
-
     public function getreact(request $request)
     {
 
-    $name = $request->input('name');
+        $name = $request->name;
 
-    return response()->json([
-        'name'=>$name
-    ]);
+        return response()->json([
+            $name,
+            $name,
+            $name
+        ]);
 
     }
 
