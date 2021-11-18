@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Mail\ContactSendmail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ValiRequest;
+use App\Http\Requests\ApiValidationRequest;
 use Illuminate\Http\Request;
 use App\Service\WritingService;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 
 class ContactController extends Controller
@@ -25,17 +28,21 @@ class ContactController extends Controller
         return view('contact.index');
     }
 
-    public function getreact(request $request)
+    public function getreact(ApiValidationRequest $request)
     {
 
-        $name = $request->name;
+    }
+
+    public function mailsend(Request $request)
+    {
+        $inputs = $request->all();
+
+        Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
 
         return response()->json([
-            $name,
-            $name,
-            $name
+            $inputs,
+            "hello"
         ]);
-
     }
 
 
